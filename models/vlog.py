@@ -10,7 +10,7 @@ logging.set_verbosity_error()
 from models.kts_model import VideoSegmentor
 from models.clip_model import FeatureExtractor
 from models.blip2_model import ImageCaptioner
-from models.grit_model import DenseCaptioner
+#from models.grit_model import DenseCaptioner
 from models.whisper_model import AudioTranslator
 from models.gpt_model import LlmReasoner
 from utils.utils import logger_creator, format_time
