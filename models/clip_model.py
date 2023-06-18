@@ -4,7 +4,7 @@ import pdb
 import torch
 import numpy as np
 from PIL import Image
-from transformers import CLIPProcessor, CLIPVisionModelWithProjection
+from transformers import ChineseCLIPProcessor, ChineseCLIPModel
 from transformers import logging
 logging.set_verbosity_error()
 
@@ -12,8 +12,8 @@ class FeatureExtractor():
     def __init__(self, args):
         self.device = args.feature_extractor_device
         self.beta = args.beta
-        self.processor = CLIPProcessor.from_pretrained(args.feature_extractor)
-        self.model = CLIPVisionModelWithProjection.from_pretrained(args.feature_extractor).to(self.device)
+        self.processor = ChineseCLIPProcessor.from_pretrained(args.feature_extractor)
+        self.model = ChineseCLIPModel.from_pretrained(args.feature_extractor).to(self.device)
         self.data_dir = args.data_dir
         self.tmp_dir = args.tmp_dir
 
@@ -44,7 +44,8 @@ class FeatureExtractor():
                 inputs = inputs.to(self.device)
                 
                 with torch.no_grad():
-                    feat = self.model(inputs)['image_embeds']
+                    #feat = self.model(inputs)['image_embeds']
+                    feat = self.model.get_image_features(inputs)
                     clip_features.append(feat.cpu().numpy())
         print("Finished.")
 
