@@ -123,12 +123,7 @@ with gr.Blocks(css=css) as demo:
 
         examples = gr.Examples(
             examples=[
-                ["examples/basketball_vlog.mp4"],
-                ["examples/travel_in_roman.mp4"],
-                ["examples/C8lMW0MODFs.mp4"],
-                ["examples/huaqiang.mp4"],
-                ["examples/C8lMW0MODFs.mp4"],
-                ["examples/outcGtbnMuQ.mp4"],
+                ["examples/buy_watermelon.mp4"],
             ],
             inputs=[video_inp],
         )
